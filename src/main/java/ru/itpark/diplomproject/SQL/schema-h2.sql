@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS students;
+
+CREATE TABLE IF NOT EXISTS students(
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  firstName VARCHAR(255) NOT NULL,
+  secondName VARCHAR(255) NOT NULL,
+  score INTEGER --по умолчанию ноль?
+);

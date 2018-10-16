@@ -17,20 +17,6 @@ public class EventRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Event> findAllEvents() {//вывод для общей страницы?
-        return jdbcTemplate.query("SELECT id, nameEvent, volonteerRoles, dateEvent FROM events",
-                new RowMapper<Event>() {
-                    @Override
-                    public Event mapRow(ResultSet resultSet, int i) throws SQLException {
-                        return new Event(
-                                resultSet.getInt("id"),
-                                resultSet.getString("nameEvent"),
-                                resultSet.getString("volonteerRoles"),
-                                resultSet.getString("dateEvent")
-                        );
-                    }
-                }
-        );
-    }
+
 
 }

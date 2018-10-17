@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS events(
   nameEvent TEXT NOT NULL,
   description TEXT NOT NULL,
   dateEvent TEXT,
-  success INTEGER --статус проведения мероприятия
+  success INTEGER -- статус проведения мероприятия, нужен для начисления баллов
 );
 
 CREATE TABLE IF NOT EXISTS eventRoles(
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS participants(
   state INTEGER --Статус одобрения, а нужен ли он?
 );
 
-CREATE TABLE IF NOT EXISTS moderators( --А нужны ли они?
+CREATE TABLE IF NOT EXISTS moderators( --для доступа в админ-панель нужны
   moderatorId INTEGER PRIMARY KEY AUTO_INCREMENT,
   userId INTEGER
 );

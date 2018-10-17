@@ -40,7 +40,7 @@ public class EventController {
         return roles;
     }
 
-    @RequestMapping("/api/getEvents")
+    @RequestMapping("/api/getAllEvents")//Студент
     public List<Event> getAllEvents() {
         List<Event> events = jdbcTemplate.query("SELECT eventId, nameEvent, description, dateEvent FROM events",
                 new RowMapper<Event>() {
@@ -60,7 +60,7 @@ public class EventController {
 
     }
 
-    @RequestMapping("api/addEvent")
+    @RequestMapping("api/addEvent")//Модератор
     public void addEvent(@RequestParam(value = "title", required = true, defaultValue = "") String title,
                          @RequestParam(value = "description", required = true, defaultValue = "") String description,
                          @RequestParam(value = "date", required = true, defaultValue = "") Date date,//sql date
@@ -94,14 +94,14 @@ public class EventController {
 
     }
 
-    @RequestMapping("api/removeEventById")
+    @RequestMapping("api/removeEventById")//Модератор
     public void removeEventById(@RequestParam(value = "eventId", required = true, defaultValue = "") int eventId) {
         Map<String, Integer> params = new HashMap<>();
         params.put("eventId", eventId);
         jdbcTemplate.update("DELETE FROM events WHERE eventId=?", params);
     }
 
-    @RequestMapping("api/successEvent")
+    @RequestMapping("api/successEvent")//Модератор
     public void successEvent(@RequestParam(value = "eventId", required = true, defaultValue = "") int eventId) {
         Map<String, Integer> params = new HashMap<>();
         params.put("eventId", eventId);
@@ -123,7 +123,7 @@ public class EventController {
         }
     }
 
-    @RequestMapping("api/changeStudentById")
+    @RequestMapping("api/changeStudentById")//Модератор
     public void changeStudentInEventById(@RequestParam(value = "firstStudent", required = true, defaultValue = "") int firstStudent,
                                          @RequestParam(value = "secondStudent", required = true, defaultValue = "") int secondStudent,
                                          @RequestParam(value = "eventId", required = true, defaultValue = "") int eventId) {
@@ -139,6 +139,3 @@ public class EventController {
     }
 
 }
-//org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eventController' defined in file [/Users/Aydar/IdeaProjects/DoplomProject/target/classes/ru/itpark/diplomproject/controller/EventController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'namedParameterJdbcTemplate' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/JdbcTemplateAutoConfiguration$NamedParameterJdbcTemplateConfiguration.class]: Unsatisfied dependency expressed through method 'namedParameterJdbcTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration$JdbcTemplateConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException: Property spring.datasource.schema with value 'class path resource [SQL/schema-h2.sql]' is invalid: The specified resource does not exist.
-
-//org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'eventController' defined in file [/Users/Aydar/IdeaProjects/DoplomProject/target/classes/ru/itpark/diplomproject/controller/EventController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'namedParameterJdbcTemplate' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/JdbcTemplateAutoConfiguration$NamedParameterJdbcTemplateConfiguration.class]: Unsatisfied dependency expressed through method 'namedParameterJdbcTemplate' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration$JdbcTemplateConfiguration': Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.boot.context.properties.source.InvalidConfigurationPropertyValueException: Property spring.datasource.schema with value 'class path resource [SQL/schema-h2.sql]' is invalid: The specified resource does not exist.

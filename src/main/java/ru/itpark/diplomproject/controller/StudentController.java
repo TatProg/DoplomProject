@@ -23,7 +23,7 @@ public class StudentController {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @RequestMapping("/api/getAllStudents")
+    @RequestMapping("/api/getAllStudents")//Студент
     public List<Student> getAllStudents() {
         List<Student> students = jdbcTemplate.query("SELECT studentId, secondName, firstName, lastName, groupNumber, score FROM students",
                 new RowMapper<Student>() {
@@ -42,7 +42,7 @@ public class StudentController {
         return students;
     }
 
-    @RequestMapping("api/participantStudent")
+    @RequestMapping("api/participantStudent")//Студент
     public void ParticipantStudent(@RequestParam(value = "studentId", required = true, defaultValue = "") int studentId,
                                    @RequestParam(value = "eventId", required = true, defaultValue = "") int eventId,
                                    @RequestParam(value = "roleId", required = true, defaultValue = "") int roleId) {
@@ -53,7 +53,7 @@ public class StudentController {
         jdbcTemplate.update("INSERT INTO participants (eventId, roleId, studentId)  VALUES (?,?,?)", params);
     }
 
-    @RequestMapping("api/removeParticipantStudent")
+    @RequestMapping("api/removeParticipantStudent")//Студент
     public void RemoveParticipantStudent(@RequestParam(value = "studentId", required = true, defaultValue = "") int studentId,
                                          @RequestParam(value = "eventId", required = true, defaultValue = "") int eventId,
                                          @RequestParam(value = "roleId", required = true, defaultValue = "") int roleId) {
@@ -88,7 +88,7 @@ public class StudentController {
         return students.get(0);//из листа выводим самую первую запись
     }
 
-    @RequestMapping("api/getStudentEventList")
+    @RequestMapping("api/getStudentEventList")//Студент
     public List<Event> getStudentEventList(@RequestParam(value = "studentId", required = true, defaultValue = "") int studentId) {
         Map<String, Integer> params = new HashMap<>();
         params.put("studentId", studentId);
@@ -121,5 +121,13 @@ public class StudentController {
         return studentEvents;
     }
 
+    @RequestMapping("api/removeStudentById")//Модератор
+    public void removeStudentById(@RequestParam(value = "studentId", required = true, defaultValue = "") int studentId) {
+        Map<String, Integer> params = new HashMap<>();
+        params.put("studentId", studentId);
+        jdbcTemplate.update("DELETE FROM students AND participants WHERE studentsId=?", params);
+        //jdbcTemplate.update("DELETE FROM students WHERE studentsId=?", params);
+        //jdbcTemplate.update("DELETE FROM participants WHERE studentsId=?", params);
+    }
 
 }

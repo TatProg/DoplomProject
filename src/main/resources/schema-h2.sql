@@ -5,10 +5,10 @@ DROP TABLE IF EXISTS participants;
 DROP TABLE IF EXISTS moderators;
 
 CREATE TABLE IF NOT EXISTS students(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  secondName VARCHAR(55) NOT NULL,
-  firstName VARCHAR(55) NOT NULL,
-  lastName VARCHAR(55) NOT NULL,
+  studentId INTEGER PRIMARY KEY AUTO_INCREMENT,
+  secondName VARCHAR(64) NOT NULL,
+  firstName VARCHAR(64) NOT NULL,
+  lastName VARCHAR(64) NOT NULL,
   groupNumber INTEGER,
   userName VARCHAR(64),
   password VARCHAR(64),
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS students(
 );
 
 CREATE TABLE IF NOT EXISTS events(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  eventId INTEGER PRIMARY KEY AUTO_INCREMENT,
   nameEvent TEXT NOT NULL,
   description TEXT NOT NULL,
   dateEvent TEXT,
@@ -24,22 +24,22 @@ CREATE TABLE IF NOT EXISTS events(
 );
 
 CREATE TABLE IF NOT EXISTS eventRoles(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  eventRoleId INTEGER PRIMARY KEY AUTO_INCREMENT,
   eventId INTEGER NOT NULL,
-  roleName VARCHAR(55) NOT NULL,
+  roleName VARCHAR(64) NOT NULL,
   score INTEGER NOT NULL,
-  quantity INTEGER --сколько людей нужно для ивента, убывание до нуля. Если ноль, то не нужны люди
-);
+  quantity INTEGER --Сколько людей нужно для ивента, убывание до нуля. Если ноль, то не нужны люди.
+); -- А нужно ли quantity поле именно сейчас?
 
 CREATE TABLE IF NOT EXISTS participants(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  participantId INTEGER PRIMARY KEY AUTO_INCREMENT,
   eventId INTEGER,
   roleId INTEGER,
-  userId INTEGER,
-  state INTEGER --статус одобрения, а нужен ли он?
+  studentId INTEGER,
+  state INTEGER --Статус одобрения, а нужен ли он?
 );
 
-CREATE TABLE IF NOT EXISTS moderators(
-  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS moderators( --А нужны ли они?
+  moderatorId INTEGER PRIMARY KEY AUTO_INCREMENT,
   userId INTEGER
 );

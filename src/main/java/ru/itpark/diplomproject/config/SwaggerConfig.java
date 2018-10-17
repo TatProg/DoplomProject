@@ -18,6 +18,4 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("ru.itpark"))
                 .build();
     }
-    //Тупо копипаста из проекта классой работы. путь:
-    // /Users/Aydar/Downloads/Lection18/TaskTracker/02. Task Tracker/src/main/java/ru/itpark/tasktracker/config/SwaggerConfig.java
 }

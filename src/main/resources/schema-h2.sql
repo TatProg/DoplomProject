@@ -33,13 +33,13 @@ CREATE TABLE IF NOT EXISTS eventRoles(
 
 CREATE TABLE IF NOT EXISTS participants(
   participantId INTEGER PRIMARY KEY AUTO_INCREMENT,
-  eventId INTEGER,
-  roleId INTEGER,
-  studentId INTEGER,
+  eventId INTEGER NOT NULL ,
+  roleId INTEGER NOT NULL ,
+  studentId INTEGER NOT NULL ,
   state INTEGER --Статус одобрения, а нужен ли он?
 );
 
 CREATE TABLE IF NOT EXISTS moderators( --для доступа в админ-панель нужны
   moderatorId INTEGER PRIMARY KEY AUTO_INCREMENT,
-  userId INTEGER
+  studentId INTEGER
 );

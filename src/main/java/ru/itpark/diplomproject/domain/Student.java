@@ -1,22 +1,20 @@
 package ru.itpark.diplomproject.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 public class Student {
     private final int id;
     private final String secondName;
     private final String firstName;
     private final String lastName;
     private final int score;
+    private final boolean isAdmin;
 
-    public Student(int id, String secondName, String firstName, String lastName, int score) {
+    public Student(int id, String secondName, String firstName, String lastName, int score, boolean isAdmin) {
         this.id = id;
         this.secondName = secondName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.score = score;
+        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -37,5 +35,9 @@ public class Student {
 
     public int getScore() {
         return score;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 }

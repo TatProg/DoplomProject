@@ -1,0 +1,111 @@
+<html>
+<head>
+    <title>Hi %user%</title>
+    <meta charset="utf-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-xs-3 text-center">
+            <h2 id="name">
+
+            </h2>
+        </div>
+        <div class="col-md-6 col-xs-6 text-center">
+            <h1>Панель Организатора</h1>
+            <div id="score"></div>
+            <div id="event-list">
+                <div id="accordion" role="tablist" aria-multiselectable="true">
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-3">
+            <div id="menu">
+                <ul class="nav nav-tabs nav-stacked" style="margin-top:15%">
+                    <li><a href="" onclick="getEventList(); return false;">Все Ивенты</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#newEvent" >Новый Ивент</a></li>
+                    <li><a href="" id="exit">Выйти</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successReg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            <h2>Новое мероприятие</h2>
+            </div>
+            <div class="modal-body text-center">
+            <form method="get" id="newEventForm">
+                <label for="eventName"> Название мероприятия</label><br>
+
+                <input  id="eventName"/><br>
+                <label for="description"> Описание мероприятия</label><br>
+
+                <textarea   id="description" rows="5"></textarea>
+                <!--<h3>Роли:</h3>
+                <table id="roles">
+                    <tr><td>Название роли</td><td>Баллы</td></tr>
+                    <tr><td><input  id="roleName1"/></td><td> <input id="score1"/></td></tr>
+                </table>
+                <button type="btn btn-success" onclick="addRow('newEventForm'); return false;"><span class="glyphicon glyphicon-plus-sign"></span></button>
+              --> <br> <button type="submit" class="btn-success">Создать</button>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">getEventList()</script>
+
+
+</body>
+</html>

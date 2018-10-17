@@ -1,6 +1,5 @@
 package ru.itpark.diplomproject.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Event {
@@ -9,11 +8,16 @@ public class Event {
     private final String description;
     private final List<Role> roles;
 
-    public Event(int id, String nameEvent, String description, List<Role> roles) {
+
+
+    private final String date;
+
+    public Event(int id, String nameEvent, String description, List<Role> roles, String date) {
         this.id = id;
         this.nameEvent = nameEvent;
         this.description = description;
         this.roles = roles;
+        this.date = date;
     }
 
     public int getId() {
@@ -30,5 +34,9 @@ public class Event {
 
     public List<Role> getRoles() {
         return roles;
+    }
+
+    public String getDate() {
+        return date;
     }
 }
